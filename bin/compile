@@ -40,10 +40,10 @@ if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   cd libmaxminddb-1.1.1
 
   echo "     Configuring and building limmaxminddb"
-  ./configure --prefix="$ROOT_DIR/$CACHE_DIR/.geoip/libmaxminddb" > /dev/null
-  make > /dev/null
-  make check > /dev/null
-  make install > /dev/null
+  ./configure --prefix="$ROOT_DIR/$CACHE_DIR/.geoip/libmaxminddb" #> /dev/null
+  make #> /dev/null
+  make check #> /dev/null
+  make install #> /dev/null
 
   cd $ROOT_DIR
 else
