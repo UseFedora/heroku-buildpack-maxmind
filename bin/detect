@@ -1,5 +1,5 @@
 #!/bin/sh
 
 # always install
-echo "geoip"
+echo "MaxMind GeoIP2"
 exit 0

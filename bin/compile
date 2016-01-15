@@ -4,16 +4,11 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_FILE=$3
 
-# Uncomment if you need to debug
-# echo $BUILD_DIR
-# echo $CACHE_DIR
-# echo $ENV_FILE
-
 GEOIP_VERSION="1.6.6"
 LIBMAXMIND_DIST_FILE="libmaxminddb-1.1.1.tar.gz"
 
 VENDORED_GEOIP="vendor/geoip/$GEOIP_VERSION"
-APP_GEOIP="/app/$VENDORED_GEOIP"
+APP_GEOIP="$HOME/$VENDORED_GEOIP"
 
 # Maxmind GeoIP database
 
@@ -23,7 +18,12 @@ LIBMAXMIND_DIST_URL="https://github.com/maxmind/libmaxminddb/releases/download/1
 GEOIP_DIST_DIR="GeoIP-$GEOIP_VERSION"
 ROOT_DIR=$(pwd)
 
-echo "Preparing directoryies: $CACHE_DIR/.geoip  $BUILD_DIR/$VENDORED_GEOIP"
+# Uncomment if you need to debug
+# echo $BUILD_DIR
+# echo $CACHE_DIR
+# echo $ENV_FILE
+# echo "Preparing directories: $CACHE_DIR/.geoip  $BUILD_DIR/$VENDORED_GEOIP"
+
 mkdir -p $CACHE_DIR/.geoip
 mkdir -p "$BUILD_DIR/$VENDORED_GEOIP"
 mkdir -p "$BUILD_DIR/$VENDORED_GEOIP/share/"
