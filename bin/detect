@@ -1,4 +1,5 @@
 #!/bin/sh
 
 # always install
+echo "geoip"
 exit 0
