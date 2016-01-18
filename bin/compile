@@ -67,8 +67,11 @@ echo "export CPATH=\"-Ivendor/libmaxminddb/include -Ivendor/libmaxminddb/lib\"" 
 echo "export CPPFLAGS=\"-Ivendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
-export CPPFLAGS="-Ivendor/libmaxminddb/include"
-export LDFLAGS="-Lvendor/libmaxminddb/lib"
+export CPPFLAGS="-I$BUILD_DIR/vendor/libmaxminddb/include"
+export LDFLAGS="-L$BUILD_DOR/vendor/libmaxminddb/lib"
+
+echo $CPPFLAGS
+echo $LDFLAGS
 
 # echo "       TESTING gem"
 # LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
