@@ -67,4 +67,4 @@ echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
 echo "export PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/bin:\$PATH\"" >> $PROFILE_PATH
 echo "export LD_LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
 
-echo "       exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
+echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
