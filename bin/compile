@@ -69,4 +69,4 @@ echo "export LD_LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_
 
 echo "       exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
 
-tree $BUILD_DIR
+ls -alR $BUILD_DIR
