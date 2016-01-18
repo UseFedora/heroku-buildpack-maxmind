@@ -56,7 +56,7 @@ fi
 cp "$CACHE_DIR/.geoip/$GEOLITECITY_FILE" "$BUILD_DIR/vendor/share/$GEOLITECITY_FILE"
 GEOIP_DB_PATH="\$HOME/vendor/share/$GEOLITECITY_FILE"
 
-PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
 echo "export PATH=\"\$PATH:vendor/libmaxminddb/bin\"" >> $PROFILE_PATH
@@ -67,9 +67,12 @@ echo "export CPATH=\"-Ivendor/libmaxminddb/include -Ivendor/libmaxminddb/lib\"" 
 echo "export CPPFLAGS=\"-Ivendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
+export CPPFLAGS="-Ivendor/libmaxminddb/include"
+export LDFLAGS="-Lvendor/libmaxminddb/lib"
+
 # echo "       TESTING gem"
 # LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
-# gem install maxmind_geoip2
+gem install maxmind_geoip2
 
 cat $PROFILE_PATH
 
