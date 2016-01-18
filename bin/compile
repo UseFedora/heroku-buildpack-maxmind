@@ -59,9 +59,9 @@ GEOIP_DB_PATH="\$HOME/vendor/share/$GEOLITECITY_FILE"
 PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
-echo 'export PATH="$HOME/vendor/libmaxminddb/bin:$PATH"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$HOME/vendor/libmaxminddb/include/:$HOME/vendor/libmaxminddb/lib/:$LD_LIBRARY_PATH"' >> $PROFILE_PATH
-# echo 'export LIBRARY_PATH="$HOME/vendor/libmaxminddb/include:$HOME/vendor/libmaxminddb/lib:$LIBRARY_PATH"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:vendor/libmaxminddb/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib"' >> $PROFILE_PATH
+# echo 'export LIBRARY_PATH="$LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib"' >> $PROFILE_PATH
 # echo 'export INCLUDE_PATH="$HOME/vendor/libmaxminddb/include:$HOME/vendor/libmaxminddb/lib:$INCLUDE_PATH"' >> $PROFILE_PATH
 # echo 'export CPATH="$INCLUDE_PATH"' >> $PROFILE_PATH
 # echo 'export CFLAGS="-I$HOME/vendor/libmaxminddb/include $CFLAGS"' >> $PROFILE_PATH
