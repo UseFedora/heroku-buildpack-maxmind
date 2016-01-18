@@ -34,12 +34,12 @@ if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   # Download and build libmaxminddb
   cd "$CACHE_DIR/.geoip"
 
-  echo "     Downloading limmaxminddb"
+  echo "       Downloading limmaxminddb"
   curl -s -L -o libmaxminddb-1.1.1.tar.gz $LIBMAXMIND_DIST_URL > /dev/null
   tar -zxvf libmaxminddb-1.1.1.tar.gz > /dev/null
   cd libmaxminddb-1.1.1
 
-  echo "     Configuring and building limmaxminddb"
+  echo "       Configuring and building limmaxminddb"
   ./configure --prefix="$CACHE_DIR/.geoip/libmaxminddb" > /dev/null
   make > /dev/null
   make check > /dev/null
@@ -47,14 +47,14 @@ if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
 
   cd $ROOT_DIR
 else
-  echo "      $CACHE_DIR/.geoip/libmaxminddb already cached"
+  echo "       $CACHE_DIR/.geoip/libmaxminddb already cached"
 fi
 
 # Copy libmaxminddb files to build dir
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/$VENDORED_GEOIP
 
 if [ ! -f $CACHE_DIR/.geoip/$GEOLITECITY_FILE ]; then
-  echo "     Downloading  $GEOLITECITY_FILE"
+  echo "       Downloading  $GEOLITECITY_FILE"
 
   cd "$CACHE_DIR/.geoip"
 
@@ -63,7 +63,7 @@ if [ ! -f $CACHE_DIR/.geoip/$GEOLITECITY_FILE ]; then
 
   cd $ROOT_DIR
 else
-  echo "      $GEOLITECITY_FILE already cached"
+  echo "       $GEOLITECITY_FILE already cached"
 fi
 
 ls -al $CACHE_DIR/.geoip
@@ -73,11 +73,14 @@ GEOIP_DB_PATH="$APP_GEOIP/share/$GEOLITECITY_FILE"
 
 LIBMAXMINDDB_PATH="$APP_GEOIP/libmaxminddb"
 
+echo "\$LIBMAXMINDDB_PATH:$LIBMAXMINDDB_PATH Contents:"
+ls $LIBMAXMINDDB_PATH
+
 PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo "       export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
-echo "       export MAXMIND_BINARY=\"$LIBMAXMINDDB_PATH/bin/mmdblookup\"" >> $PROFILE_PATH
-echo "       export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
+echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
+echo "export MAXMIND_BINARY=\"$LIBMAXMINDDB_PATH/bin/mmdblookup\"" >> $PROFILE_PATH
+echo "export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
 
 cat $PROFILE_PATH
 echo "       GeoIP City Database is available via env in \$GEOIP_DB_PATH = $GEOIP_DB_PATH"
