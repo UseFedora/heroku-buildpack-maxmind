@@ -68,6 +68,7 @@ echo 'export CFLAGS="-I$HOME/vendor/libmaxminddb/include $CFLAGS"' >> $PROFILE_P
 echo 'export LDFLAGS="-L$HOME/vendor/libmaxminddb/lib $LDFLAGS"' >> $PROFILE_PATH
 
 echo "       TESTING gem"
-echo "       $(which gem)"
+sh $PROFILE_PATH
+gem install maxmind_geoip2
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
