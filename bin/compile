@@ -71,5 +71,7 @@ echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/libmaxminddb/include:vendo
 # LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
 # gem install maxmind_geoip2
 
+cat $PROFILE_PATH
+
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
