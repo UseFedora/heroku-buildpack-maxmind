@@ -69,8 +69,8 @@ echo "export CPATH=\"-I/app/vendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
 echo "-----> Configuring Bundler"
-mkdir -p $BUILD_DIR/.bundle
-echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
+# mkdir -p $BUILD_DIR/.bundle
+# echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
 
-echo "-----> GEOIP DB Available in ENV \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
-echo "-----> Done"
+echo "-----> GeoIP DB Available in ENV GEOIP_DB_PATH=$GEOIP_DB_PATH"
+echo "-----> MaxMind GeoIP2 Done"
