@@ -70,6 +70,7 @@ echo 'echo "Done"' >> $PROFILE_PATH
 
 echo "       TESTING gem"
 sh $PROFILE_PATH
+echo "       LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
 gem install maxmind_geoip2
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
