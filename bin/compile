@@ -66,13 +66,10 @@ echo 'export INCLUDE_PATH="$HOME/vendor/libmaxminddb/include:$HOME/vendor/libmax
 echo 'export CPATH="$INCLUDE_PATH"' >> $PROFILE_PATH
 echo 'export CFLAGS="-I$HOME/vendor/libmaxminddb/include $CFLAGS"' >> $PROFILE_PATH
 echo 'export LDFLAGS="-L$HOME/vendor/libmaxminddb/lib $LDFLAGS"' >> $PROFILE_PATH
-echo 'gem install maxmind_geoip2' >> $PROFILE_PATH
-echo 'echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"' >> $PROFILE_PATH
-echo 'ls /app/vendor/libmaxminddb/include' >> $PROFILE_PATH
-echo 'echo "Done"' >> $PROFILE_PATH
 
 echo "       TESTING gem"
-sh $PROFILE_PATH
+LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
+gem install maxmind_geoip2
 
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
