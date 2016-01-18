@@ -75,8 +75,8 @@ export CPATH="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
 echo "-----> Configuring Bundler"
-# mkdir -p $BUILD_DIR/.bundle
-# echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
+mkdir -p $BUILD_DIR/.bundle
+echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
 
 echo "-----> GeoIP DB Available in ENV GEOIP_DB_PATH=$GEOIP_DB_PATH"
 echo "-----> MaxMind GeoIP2 Done"
