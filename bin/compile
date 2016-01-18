@@ -15,7 +15,7 @@ mkdir -p "$BUILD_DIR/vendor/share/"
 echo "-----> Installing libmaxminddb"
 echo "       Building to $BUILD_DIR"
 
-# if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
+if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   # Download and build libmaxminddb
   cd "$CACHE_DIR/.geoip"
 
@@ -31,9 +31,9 @@ echo "       Building to $BUILD_DIR"
   make install > /dev/null
 
   cd $HOME
-# else
-#   echo "       $CACHE_DIR/.geoip/libmaxminddb already cached"
-# fi
+else
+  echo "       $CACHE_DIR/.geoip/libmaxminddb already cached"
+fi
 
 # Copy libmaxminddb files to build dir
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/vendor
@@ -43,7 +43,7 @@ GEOLITECITY_FILE="GeoLite2-City.mmdb"
 
 echo "-----> Installing City Database"
 
-# if [ ! -f $CACHE_DIR/.geoip/$GEOLITECITY_FILE ]; then
+if [ ! -f $CACHE_DIR/.geoip/$GEOLITECITY_FILE ]; then
   echo "       Downloading  $GEOLITECITY_FILE"
 
   cd "$CACHE_DIR/.geoip"
@@ -52,9 +52,9 @@ echo "-----> Installing City Database"
   gunzip ${GEOLITECITY_FILE}.gz > /dev/null
 
   cd $HOME
-# else
-#   echo "       $GEOLITECITY_FILE already cached"
-# fi
+else
+  echo "       $GEOLITECITY_FILE already cached"
+fi
 
 cp "$CACHE_DIR/.geoip/$GEOLITECITY_FILE" "$BUILD_DIR/vendor/share/$GEOLITECITY_FILE"
 GEOIP_DB_PATH="\$HOME/vendor/share/$GEOLITECITY_FILE"
