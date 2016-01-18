@@ -9,7 +9,7 @@ ENV_FILE=$3
 ROOT_DIR=$(pwd)
 LIBMAXMIND_DIST_URL="https://github.com/maxmind/libmaxminddb/releases/download/1.1.4/libmaxminddb-1.1.4.tar.gz"
 VENDOR_DIR="vendor"
-APP_GEOIP="\$HOME/$VENDOR_DIR"
+APP_GEOIP="/app/$VENDOR_DIR"
 
 mkdir -p $CACHE_DIR/.geoip
 mkdir -p "$BUILD_DIR/$VENDOR_DIR"
@@ -64,10 +64,10 @@ GEOIP_DB_PATH="$APP_GEOIP/share/$GEOLITECITY_FILE"
 PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
-echo "export PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$HOME/$VENDOR_DIR/libmaxminddb/bin:\$PATH\"" >> $PROFILE_PATH
-echo "export LD_LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
-echo "export LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LIBRARY_PATH\"" >> $PROFILE_PATH
-echo "export INCLUDE_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$INCLUDE_PATH\"" >> $PROFILE_PATH
+echo "export PATH=\"/app/$VENDOR_DIR/libmaxminddb/include:/app/$VENDOR_DIR/libmaxminddb/lib:/app/$VENDOR_DIR/libmaxminddb/bin:\$PATH\"" >> $PROFILE_PATH
+echo "export LD_LIBRARY_PATH=\"/app/$VENDOR_DIR/libmaxminddb/include:/app/$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
+echo "export LIBRARY_PATH=\"/app/$VENDOR_DIR/libmaxminddb/include:/app/$VENDOR_DIR/libmaxminddb/lib:\$LIBRARY_PATH\"" >> $PROFILE_PATH
+echo "export INCLUDE_PATH=\"/app/$VENDOR_DIR/libmaxminddb/include:/app/$VENDOR_DIR/libmaxminddb/lib:\$INCLUDE_PATH\"" >> $PROFILE_PATH
 echo "export CPATH=\"\$INCLUDE_PATH\"" >> $PROFILE_PATH
 echo "export CFLAGS=\"-I/app/$VENDOR_DIR/libmaxminddb/include \$CFLAGS\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/$VENDOR_DIR/libmaxminddb/lib \$LDFLAGS\"" >> $PROFILE_PATH
