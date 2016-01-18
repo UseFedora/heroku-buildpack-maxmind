@@ -62,22 +62,20 @@ echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
 echo "export PATH=\"\$PATH:vendor/libmaxminddb/bin\"" >> $PROFILE_PATH
 echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "export INCLUDE_PATH=\"\$INCLUDE_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 echo "export CPATH=\"-Ivendor/libmaxminddb/include -Ivendor/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "export CPPFLAGS=\"-Ivendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
-export CFLAGS="-Ivendor/libmaxminddb/include"
-export CPPFLAGS="-Ivendor/libmaxminddb/include"
-export LDFLAGS="-Lvendor/libmaxminddb/lib"
-
-echo $CPPFLAGS
-echo $LDFLAGS
-
-cd $BUILD_DIR
-
-# echo "       TESTING gem"
-# LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
-gem install maxmind_geoip2
+mkdir -p $BUILD_DIR/.bundle
+if [ -f $CACHE_DIR/.bundle/config ]; then
+  rm $CACHE_DIR/.bundle/config
+fi
+echo "---
+BUNDLE_BUILD__MAXMIND_GEOIP2: "--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
+BUNDLE_FROZEN: '1'
+BUNDLE_PATH: vendor/bundle
+BUNDLE_BIN: vendor/bundle/bin
+BUNDLE_WITHOUT: development:test
+BUNDLE_DISABLE_SHARED_GEMS: '1'
+" > $BUILD_DIR/.bundle/config
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
