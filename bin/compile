@@ -67,9 +67,9 @@ echo 'export LD_LIBRARY_PATH="$HOME/vendor/libmaxminddb/include/:$HOME/vendor/li
 # echo 'export CFLAGS="-I$HOME/vendor/libmaxminddb/include $CFLAGS"' >> $PROFILE_PATH
 # echo 'export LDFLAGS="-L$HOME/vendor/libmaxminddb/lib $LDFLAGS"' >> $PROFILE_PATH
 
-echo "       TESTING gem"
-LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
-gem install maxmind_geoip2
+# echo "       TESTING gem"
+# LD_LIBRARY_PATH="$BUILD_DIR/vendor/libmaxminddb/include:$BUILD_DIR/vendor/libmaxminddb/lib"
+# gem install maxmind_geoip2
 
 
 echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
