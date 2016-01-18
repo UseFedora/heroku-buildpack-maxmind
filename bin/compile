@@ -67,14 +67,14 @@ echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:/app/vendor/libmaxminddb/lib\""
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 echo "export CPATH=\"-I/app/vendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "export BUNDLE_BUILD__MAXMIND_GEOIP2=\"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $PROFILE_PATH
+# echo "export BUNDLE_BUILD__MAXMIND_GEOIP2=\"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $PROFILE_PATH
 
 export PATH="$PATH:$BUILD_DIR/vendor/libmaxminddb/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib"
 export LIBRARY_PATH="$LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib"
 export CPATH="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
-export BUNDLE_BUILD__MAXMIND_GEOIP2="--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
+# export BUNDLE_BUILD__MAXMIND_GEOIP2="--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
 
 echo "-----> Configuring Bundler"
 # mkdir -p $BUILD_DIR/.bundle
