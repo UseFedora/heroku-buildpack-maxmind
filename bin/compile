@@ -8,7 +8,7 @@ ENV_FILE=$3
 
 ROOT_DIR=$(pwd)
 LIBMAXMIND_DIST_URL="https://github.com/maxmind/libmaxminddb/releases/download/1.1.4/libmaxminddb-1.1.4.tar.gz"
-VENDOR_DIR="vendor/geoip"
+VENDOR_DIR="vendor"
 APP_GEOIP="\$HOME/$VENDOR_DIR"
 
 mkdir -p $CACHE_DIR/.geoip
@@ -59,20 +59,11 @@ fi
 cp "$CACHE_DIR/.geoip/$GEOLITECITY_FILE" "$BUILD_DIR/$VENDOR_DIR/share/$GEOLITECITY_FILE"
 GEOIP_DB_PATH="$APP_GEOIP/share/$GEOLITECITY_FILE"
 
-LIBMAXMINDDB_PATH="$APP_GEOIP/libmaxminddb"
-
-ls -al $BUILD_DIR/$VENDOR_DIR
-ls -al "$BUILD_DIR/$VENDOR_DIR/libmaxminddb"
-ls -al "$BUILD_DIR/$VENDOR_DIR/libmaxminddb/lib"
-ls -al "$BUILD_DIR/$VENDOR_DIR/libmaxminddb/include"
-ls -al "$BUILD_DIR/$VENDOR_DIR/libmaxminddb/share"
-ls -al "$BUILD_DIR/$VENDOR_DIR/share"
-
 PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
-echo "export PATH=\"$LIBMAXMINDDB_PATH/bin:\$PATH\"" >> $PROFILE_PATH
-echo "export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
+echo "export PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/bin:\$PATH\"" >> $PROFILE_PATH
+echo "export LD_LIBRARY_PATH=\"$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
 
 cat $PROFILE_PATH
 echo "       GeoIP City Database is available via env in \$GEOIP_DB_PATH = $GEOIP_DB_PATH"
