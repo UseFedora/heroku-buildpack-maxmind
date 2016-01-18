@@ -69,7 +69,7 @@ echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
 export CFLAGS="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export CPPFLAGS="-I$BUILD_DIR/vendor/libmaxminddb/include"
-export LDFLAGS="-L$BUILD_DOR/vendor/libmaxminddb/lib"
+export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
 echo $CPPFLAGS
 echo $LDFLAGS
