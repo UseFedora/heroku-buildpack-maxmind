@@ -76,6 +76,7 @@ export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
 echo "-----> Configuring Bundler"
 mkdir -p $BUILD_DIR/.bundle
+touch $BUILD_DIR/.bundle/config
 sed -i "/BUNDLE_BUILD__MAXMIND_GEOIP2/d" $BUILD_DIR/.bundle/config
 bundle config build.maxmind_geoip2 "--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
 echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
