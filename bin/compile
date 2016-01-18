@@ -67,6 +67,7 @@ echo "export CPATH=\"-Ivendor/libmaxminddb/include -Ivendor/libmaxminddb/lib\"" 
 echo "export CPPFLAGS=\"-Ivendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
+export CFLAGS="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export CPPFLAGS="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export LDFLAGS="-L$BUILD_DOR/vendor/libmaxminddb/lib"
 
