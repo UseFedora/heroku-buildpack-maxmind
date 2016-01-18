@@ -13,12 +13,13 @@ mkdir -p "$BUILD_DIR/vendor"
 mkdir -p "$BUILD_DIR/vendor/share/"
 
 echo "-----> Installing libmaxminddb"
+echo "       Building to $BUILD_DIR"
 
 if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   # Download and build libmaxminddb
   cd "$CACHE_DIR/.geoip"
 
-  echo "       Downloading libmaxminddb"
+  echo "       Downloading $LIBMAXMIND_DIST_URL"
   curl -s -L -o libmaxminddb-1.1.4.tar.gz $LIBMAXMIND_DIST_URL > /dev/null
   tar -zxvf libmaxminddb-1.1.4.tar.gz > /dev/null
   cd libmaxminddb-1.1.4
@@ -40,6 +41,8 @@ cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/vendor
 GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 GEOLITECITY_FILE="GeoLite2-City.mmdb"
 
+echo "-----> Installing City Database"
+
 if [ ! -f $CACHE_DIR/.geoip/$GEOLITECITY_FILE ]; then
   echo "       Downloading  $GEOLITECITY_FILE"
 
@@ -59,38 +62,15 @@ GEOIP_DB_PATH="\$HOME/vendor/share/$GEOLITECITY_FILE"
 PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
-echo "export PATH=\"\$PATH:vendor/libmaxminddb/bin\"" >> $PROFILE_PATH
-echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:vendor/libmaxminddb/include:vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "export CPATH=\"-Ivendor/libmaxminddb/include\"" >> $PROFILE_PATH
-echo "export LDFLAGS=\"-Lvendor/libmaxminddb/lib\"" >> $PROFILE_PATH
+echo "export PATH=\"\$PATH:/app/vendor/libmaxminddb/bin\"" >> $PROFILE_PATH
+echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
+echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
+echo "export CPATH=\"-I/app/vendor/libmaxminddb/include\"" >> $PROFILE_PATH
+echo "export LDFLAGS=\"-L/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
+echo "-----> Configuring Bundler"
 mkdir -p $BUILD_DIR/.bundle
-if [ -f $CACHE_DIR/.bundle/config ]; then
-  rm $CACHE_DIR/.bundle/config
-fi
-echo "---
-BUNDLE_BUILD__MAXMIND_GEOIP2: "--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
-BUNDLE_FROZEN: '1'
-BUNDLE_PATH: vendor/bundle
-BUNDLE_BIN: vendor/bundle/bin
-BUNDLE_WITHOUT: development:test
-BUNDLE_DISABLE_SHARED_GEMS: '1'
-" > $BUILD_DIR/.bundle/config
-
-mkdir -p $BUILD_DIR/.bundle
-# if [ -f $CACHE_DIR/.bundle/config ]; then
-#   rm $CACHE_DIR/.bundle/config
-# fi
-# echo "---
-# BUNDLE_BUILD__MAXMIND_GEOIP2: "--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb"
-# BUNDLE_FROZEN: '1'
-# BUNDLE_PATH: vendor/bundle
-# BUNDLE_BIN: vendor/bundle/bin
-# BUNDLE_WITHOUT: development:test
-# BUNDLE_DISABLE_SHARED_GEMS: '1'
-# " > $BUILD_DIR/.bundle/config
-
 echo "BUNDLE_BUILD__MAXMIND_GEOIP2: \"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $BUILD_DIR/.bundle/config
 
-echo "       Exporting \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
+echo "-----> GEOIP DB Available in ENV \$GEOIP_DB_PATH=$GEOIP_DB_PATH"
+echo "-----> Done"
