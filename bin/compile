@@ -68,7 +68,7 @@ echo "export PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/l
 echo "export LD_LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LD_LIBRARY_PATH\"" >> $PROFILE_PATH
 echo "export LIBRARY_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$LIBRARY_PATH\"" >> $PROFILE_PATH
 echo "export INCLUDE_PATH=\"\$HOME/$VENDOR_DIR/libmaxminddb/include:\$HOME/$VENDOR_DIR/libmaxminddb/lib:\$INCLUDE_PATH\"" >> $PROFILE_PATH
-echo "export CPATH=\"\$INCLUDE_PATH\""
+echo "export CPATH=\"\$INCLUDE_PATH\"" >> $PROFILE_PATH
 echo "export CFLAGS=\"-I/app/$VENDOR_DIR/libmaxminddb/include \$CFLAGS\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/$VENDOR_DIR/libmaxminddb/lib \$LDFLAGS\"" >> $PROFILE_PATH
 
