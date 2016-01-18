@@ -56,12 +56,14 @@ else
   echo "       $GEOLITECITY_FILE already cached"
 fi
 
-ls -al $CACHE_DIR/.geoip
-
 cp "$CACHE_DIR/.geoip/$GEOLITECITY_FILE" "$BUILD_DIR/$VENDOR_DIR/share/$GEOLITECITY_FILE"
 GEOIP_DB_PATH="$APP_GEOIP/share/$GEOLITECITY_FILE"
 
 LIBMAXMINDDB_PATH="$APP_GEOIP/libmaxminddb"
+
+ls -al $BUILD_DIR/$VENDOR_DIR
+ls -al "$BUILD_DIR/$VENDOR_DIR/libmaxminddb"
+ls -al "$BUILD_DIR/$VENDOR_DIR/share"
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
