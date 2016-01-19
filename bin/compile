@@ -77,6 +77,7 @@ export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
 echo "-----> Exporting for Later Buildpacks"
 export | grep -E -e ' (PATH|LD_LIBRARY_PATH|LIBRARY_PATH|CPATH|LDFLAGS)='  > "$LP_DIR/export"
+echo $LP_DIR/export
 
 echo "-----> GeoIP DB Available in ENV GEOIP_DB_PATH=$GEOIP_DB_PATH"
 echo "-----> MaxMind GeoIP2 Done"
