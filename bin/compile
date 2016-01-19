@@ -70,8 +70,8 @@ echo "export CPATH=\"-I/app/vendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
 export PATH="$PATH:$BUILD_DIR/vendor/libmaxminddb/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib"
-export LIBRARY_PATH="$LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include"
+export LIBRARY_PATH="$LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include"
 export CPATH="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
