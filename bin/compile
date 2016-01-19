@@ -3,6 +3,7 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_FILE=$3
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 # Maxmind GeoIP Library and Database
 
@@ -75,7 +76,7 @@ export CPATH="-I$BUILD_DIR/vendor/libmaxminddb/include"
 export LDFLAGS="-L$BUILD_DIR/vendor/libmaxminddb/lib"
 
 echo "-----> Exporting for Later Buildpacks"
-export | grep -E -e ' (PATH|LD_LIBRARY_PATH|LIBRARY_PATH|CPATH|LDFLAGS)='  > "$BUILD_DIR/export"
+export | grep -E -e ' (PATH|LD_LIBRARY_PATH|LIBRARY_PATH|CPATH|LDFLAGS)='  > "$LP_DIR/export"
 
 echo "-----> GeoIP DB Available in ENV GEOIP_DB_PATH=$GEOIP_DB_PATH"
 echo "-----> MaxMind GeoIP2 Done"
