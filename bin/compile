@@ -75,9 +75,9 @@ echo "export PATH=\"\$PATH:$BUILD_DIR/vendor/libmaxminddb/bin\"" >> $EXPORT_PATH
 echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
 echo "export INCLUDE_PATH=\"\$INCLUDE_PATH:$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
-echo "export CPATH=\"$BUILD_DIR/vendor/libmaxminddb/include\" $CPATH" >> $EXPORT_PATH
-echo "export CPPPATH=\"$BUILD_DIR/vendor/libmaxminddb/include\" $CPPATH" >> $EXPORT_PATH
-echo "export LDFLAGS=\"$BUILD_DIR/vendor/libmaxminddb/lib\" $LDFLAGS" >> $EXPORT_PATH
+echo "export CPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\" $CPATH" >> $EXPORT_PATH
+echo "export CPPPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\" $CPPATH" >> $EXPORT_PATH
+echo "export LDFLAGS=\"-L$BUILD_DIR/vendor/libmaxminddb/lib\" $LDFLAGS" >> $EXPORT_PATH
 cat $LP_DIR/export >> $BUILD_DIR/export
 cat $LP_DIR/export
 
