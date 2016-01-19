@@ -78,6 +78,7 @@ echo "export INCLUDE_PATH=\"\$INCLUDE_PATH:$BUILD_DIR/vendor/libmaxminddb/includ
 echo "export CPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
 echo "export CPPPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
 echo "export LDFLAGS=\"-L$BUILD_DIR/vendor/libmaxminddb/lib\"" >> $EXPORT_PATH
+cat $LP_DIR/export >> $BUILD_DIR/export
 cat $LP_DIR/export
 
 echo "-----> GeoIP DB Available in ENV GEOIP_DB_PATH=$GEOIP_DB_PATH"
