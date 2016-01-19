@@ -78,7 +78,7 @@ echo "export INCLUDE_PATH=\"\$INCLUDE_PATH:$BUILD_DIR/vendor/libmaxminddb/includ
 echo "export CPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\" $CPATH" >> $EXPORT_PATH
 echo "export CPPPATH=\"-I$BUILD_DIR/vendor/libmaxminddb/include\" $CPPATH" >> $EXPORT_PATH
 echo "export LDFLAGS=\"-L$BUILD_DIR/vendor/libmaxminddb/lib\" $LDFLAGS" >> $EXPORT_PATH
-echo "BUNDLE_BUILD__MAXMIND_GEOIP2=\"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $EXPORT_PATH
+echo "export BUNDLE_BUILD__MAXMIND_GEOIP2=\"--with-opt-dir=$BUILD_DIR/vendor/libmaxminddb\"" >> $EXPORT_PATH
 cat $LP_DIR/export >> $BUILD_DIR/export
 cat $BUILD_DIR/export
 
