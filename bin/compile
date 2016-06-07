@@ -36,8 +36,8 @@ else
   echo "       $CACHE_DIR/.geoip/libmaxminddb already cached"
 fi
 
-MAXMIND_KEY=`cat $ENV_DIR/MAXMIND_KEY`
-MAXMIND_EDITIONS=`cat $ENV_DIR/MAXMIND_EDITIONS`
+MAXMIND_KEY=`cat $ENV_FILE/MAXMIND_KEY`
+MAXMIND_EDITIONS=`cat $ENV_FILE/MAXMIND_EDITIONS`
 
 # Copy libmaxminddb files to build dir
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/vendor
@@ -47,7 +47,7 @@ echo "-----> Installing City Database"
 # Copy libmaxminddb files to build dir
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/$VENDORED_GEOIP
 
-if [ ! -f "$ENV_DIR/MAXMIND_KEY" ]; then
+if [ ! -f "$ENV_FILE/MAXMIND_KEY" ]; then
   echo "-----> You must define the environment variable MAXMIND_KEY with your license key."
 
   exit 1
