@@ -43,7 +43,6 @@ MAXMIND_EDITIONS=`cat $ENV_FILE/MAXMIND_EDITIONS`
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/vendor
 
 
-echo "-----> Installing City Database"
 # Copy libmaxminddb files to build dir
 cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/$VENDORED_GEOIP
 
@@ -112,7 +111,7 @@ do
     download "$edition"
 done
 
-GEOIP_DB_PATH="\$HOME/vendor/share/GeoIP2-City.mmdb"
+GEOIP_DB_PATH="GeoIP2-City.mmdb"
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
 mkdir -p $(dirname $PROFILE_PATH)
@@ -124,6 +123,7 @@ echo "export CPATH=\"-I/app/vendor/libmaxminddb/include\"" >> $PROFILE_PATH
 echo "export LDFLAGS=\"-L/app/vendor/libmaxminddb/lib\"" >> $PROFILE_PATH
 
 echo "-----> Exporting ENV for Later Buildpacks"
+
 EXPORT_PATH="$LP_DIR/export"
 echo "export PATH=\"\$PATH:$BUILD_DIR/vendor/libmaxminddb/bin\"" >> $EXPORT_PATH
 echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include\"" >> $EXPORT_PATH
