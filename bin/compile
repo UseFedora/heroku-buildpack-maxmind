@@ -36,11 +36,6 @@ else
   echo "       $CACHE_DIR/.geoip/libmaxminddb already cached"
 fi
 
-if [ ! -f "$ENV_DIR/MAXMIND_KEY" ]; then
-  echo "-----> You must define the environment variable MAXMIND_KEY with your license key."
-
-  exit 1
-fi
 MAXMIND_KEY=`cat $ENV_DIR/MAXMIND_KEY`
 MAXMIND_EDITIONS=`cat $ENV_DIR/MAXMIND_EDITIONS`
 
